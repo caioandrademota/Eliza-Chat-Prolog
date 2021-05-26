@@ -1,9 +1,12 @@
 :-include(base_dados1).
-:-include(base_dados2).
 
 bot:-
   format('Ola!'), nl,
-  format('Como posso lhe ajudar?'), nl,
+  format('Qual o seu nome?'), nl,
+  nl, format('- '),
+  read(Nome), nl,
+  format('Consulte informacoes sobre livros no nosso chatbot!'), nl,
+  format(' Em que posso te ajudar, '), write(Nome), format('?'), nl,
   repeat,
   nl, format('- '),
   read(Entrada),
@@ -12,7 +15,7 @@ bot:-
   encerra_sessao(Entrada).
 
 consulta_base_dados(Entrada, RespostaCorreta) :-
-definida_por(Entrada, RespostaCorreta), !.
+consulta(Entrada, RespostaCorreta), !.
 
 encerra_sessao(Entrada):-
   Entrada = ('fim').
