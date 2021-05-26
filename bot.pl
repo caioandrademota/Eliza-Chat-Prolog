@@ -1,21 +1,27 @@
-:-include(base_dados1).
+% importando base de dados
+:-include(base_dados).
 
 bot:-
-  format('Ola!'), nl,
-  format('Qual o seu nome?'), nl,
-  nl, format('- '),
+  nl, format('Consulte informacoes sobre livros no nosso chatbot! :)'), nl,
+
+  format('Ola, leitor!'), nl,
+  format('Como posso te chamar?'), nl,
+  format('- '),
   read(Nome), nl,
-  format('Consulte informacoes sobre livros no nosso chatbot!'), nl,
-  format(' Em que posso te ajudar, '), write(Nome), format('?'), nl,
+
+  format('Qual livro posso pesquisar para voce, '), format(Nome), format('?'), 
+
   repeat,
-  nl, format('- '),
-  read(Entrada),
+  
+  nl, readln(Entrada),
+
   consulta_base_dados(Entrada, Resposta),
-  format(Resposta), nl,
-  encerra_sessao(Entrada).
+  nl, format(Resposta), nl,
+  
+  encerra_sessao(Entrada, Nome).
 
-consulta_base_dados(Entrada, RespostaCorreta) :-
-consulta(Entrada, RespostaCorreta), !.
+consulta_base_dados(Entrada, Resposta) :-
+  consulta(Entrada, Resposta), !.
 
-encerra_sessao(Entrada):-
-  Entrada = ('fim').
+encerra_sessao([tchau|_], Nome):-
+  format('Tchau, '), format(Nome), format('! Espero q eu tenha te ajudado :)'), nl, nl, !.
