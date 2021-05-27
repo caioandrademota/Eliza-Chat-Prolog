@@ -1,22 +1,26 @@
-homem(Vader).
-homem(Luke).
-homem(Sidious).
-mulher(Leia).
+homem(vader).
+homem(luke).
+homem(sidious).
+mulher(leia).
 
+darth(vader).
+darth(sidious).
 
-pai(Vader, Luke).
-pai(Vader, Leia).
-irmao(Luke, Leia).
+pai(vader, luke).
+pai(vader, leia).
 
-
-mestre(Yoda, Luke).
-mestrando(Luke, Yoda).
-
-
-mestre(Sidious, Vader).
-mestrando(Vader, Sidious).
-
-
-mestre(X, Y) :- mestrando(Y, X).
 filho(X, Y) :- pai(Y, X).
 irmao(X, Y) :- pai(P, X), pai(P, Y), X\=Y.
+
+
+mestre(yoda, luke).
+mestre(sidious, vader).
+
+mestrando(luke, yoda).
+mestrando(vader, sidious).
+
+
+%mestre(X, Y) :- mestrando(Y, X).
+
+matou().
+
