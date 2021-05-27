@@ -29,3 +29,4 @@ matou(luke, tarkin).
 matou(luke, jabba).
 matou(vader, sidous).
 
+darkside(vader).
